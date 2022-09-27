@@ -15,14 +15,14 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class CardDeliveryTest {
 
-    public String meetingDate(int days) {
+    public String generateDate(int days) {
         return LocalDate.now().plusDays(days).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
     }
 
 
     @Test
     void shouldSentFormPopularName() {
-        String planningDate = meetingDate(5);
+        String planningDate = generateDate(5);
         open("http://localhost:9999");
         $("[placeholder=\"Город\"]").setValue("Санкт-Петербург");
         $("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
